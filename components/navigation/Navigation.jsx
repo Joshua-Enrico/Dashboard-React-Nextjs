@@ -1,243 +1,15 @@
 import styled from 'styled-components';
+import { useState } from 'react';
 //Icons
 import { AiOutlineHome, AiOutlineMail } from 'react-icons/ai';
 import { MdSpaceDashboard } from 'react-icons/md';
 import { IoIosPeople } from 'react-icons/io';
 import { SiPhpmyadmin } from 'react-icons/si';
 import { BsCircle } from 'react-icons/bs';
-
+import { GrRadial, GrRadialSelected } from 'react-icons/gr';
 
 import { COLORS } from '../../styles/Colors';
-
-
-
-
-
-const DropMenu = styled.ul`
-    margin: 0;
-    box-sizing: border-box;
-    top: 0;
-    left: 0;
-    width: 100%;
-    paddin-left: 5px;
-    padding-top: 0px;
-    padding-right: 0px;
-    padding-bottom: 15px;
-    display: none;
-`
-
-
-
-const Navli = styled.li`
-    position: relative;
-    width: 100%;
-    list-style-type: none;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-    
-
-`
-
-const Nav = styled.div`
-    position: fixed;
-    width: 80px;
-    height: 100%;
-    background: ${props => props.color};
-    border-left: 10px solid ${props => props.color};
-    transition: 0.5s;
-    overflow: hidden;
-    
-    ${Navli} {
-        &.selected {
-            background: ${COLORS.white};
-            & > a {
-                color: ${COLORS.blue};
-            }
-            & > a:before {
-                {
-                    content: '';
-                    position: absolute;
-                    right: 0;
-                    width: 50px;
-                    top: -50px;
-                    height: 50px;
-                    border-radius: 50%;
-                    background: transparent;
-                    box-shadow: 35px 35px 0 10px ${COLORS.white};
-                    pointer-events: none;
-                }
-            }
-            & > a:after {
-                {
-                    content: '';
-                    position: absolute;
-                    right: 0;
-                    width: 50px;
-                    bottom: -50px !important;
-                    height: 50px;
-                    border-radius: 50%;
-                    background: transparent;
-                    box-shadow: 35px -35px 0 10px ${COLORS.white};
-                    pointer-events: none;
-                }
-            }
-        }
-
-    }
-
-    &:hover {
-        width: 300px;
-        ${Navli} {
-            &.active {
-                background: ${COLORS.white};
-                & > a {
-                    color: ${COLORS.blue};
-                }
-                ${DropMenu} {
-                    display: block;
-                }
-                & > a:before {
-                    {
-                        content: '';
-                        position: absolute;
-                        right: 0;
-                        width: 50px;
-                        top: -50px;
-                        height: 50px;
-                        border-radius: 50%;
-                        background: transparent;
-                        box-shadow: 35px 35px 0 10px ${COLORS.white};
-                        pointer-events: none;
-                    }
-                }
-                & > a:after {
-                    {
-                        content: '';
-                        position: absolute;
-                        right: 0;
-                        width: 50px;
-                        bottom: -150px !important;
-                        height: 50px;
-                        border-radius: 50%;
-                        background: transparent;
-                        box-shadow: 35px -35px 0 10px ${COLORS.white};
-                        pointer-events: none;
-                    }
-                }
-            }
-            &.active2 {
-                ${DropMenu} {
-                    display: block;
-                }
-                background: ${COLORS.white};
-                & > a {
-                    color: ${COLORS.blue};
-                }
-                & > a:before {
-                    {
-                        content: '';
-                        position: absolute;
-                        right: 0;
-                        width: 50px;
-                        top: -50px;
-                        height: 50px;
-                        border-radius: 50%;
-                        background: transparent;
-                        box-shadow: 35px 35px 0 10px ${COLORS.white};
-                        pointer-events: none;
-                    }
-                }
-                
-                & > a:after {
-                    {
-                        content: '';
-                        position: absolute;
-                        right: 0;
-                        width: 50px;
-                        bottom: -181px !important;
-                        height: 50px;
-                        border-radius: 50%;
-                        background: transparent;
-                        box-shadow: 35px -35px 0 10px ${COLORS.white};
-                        pointer-events: none;
-                    }
-                }
-            }
-        }
-    }
-`;
-
-
-const NavUl = styled.ul`
-    position: absolute;
-    padding: 0;
-    top: 0;
-    left: 0;
-    width: 100%;
-    & > li:nth-child(1){
-        margin-bottom: 40px;
-        pointer-events: none;
-    }
-
-`
-
-
-
-const NavA = styled.a`
-    position: relative;
-    display: block;
-    width: 100%;        
-    display: flex;
-    text-decoration: none;
-    color: ${COLORS.white};
-`
-
-const NavImg = styled.span`
-    position: relative;
-    display: block;
-    min-width: 60px;
-    height: 60px;
-    line-height: 75px;
-    text-align: center;
-    & > svg {
-        font-size: 1.75em;
-    }
-`
-
-const NavTitle = styled.span`
-    position: relative;
-    display: block;
-    padding: 0 10px;
-    height: 60px;
-    line-height: 60px;
-    text-align: start;
-    white-space: nowrap;
-`
-
-
-const DropMenuDiv = styled.div`
-    display: flex;
-    align-items: center;
-    &.active {
-        background: #f5f5f5;
-        border-radius: 10px;
-    }
-`
-
-const DropMenuText = styled.span`
-    display: block;
-    padding-left: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-`
-
-const DropMenuIcon = styled.span`
-    display: block;
-    padding-left: 30px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    line-height: 10px;
-`
+import { DropMenu, Navli, Nav, NavUl, NavA, NavImg, NavTitle, DropMenuDiv, DropMenuText, DropMenuIcon, NavToggle } from './StyledCom';
 
 
 const Navigation = () => {
@@ -250,7 +22,6 @@ const Navigation = () => {
     // Functions to handle active div
     const ActiveList = (id) => {
         if (flag > 0 && Object.keys(idList).length > 0) {
-            console.log(idList)
             const item = document.querySelector(`#${idList[index]}`);
             delete idList[index];
             if (index !== "b") {
@@ -288,12 +59,11 @@ const Navigation = () => {
             let PrevId = linkId[0].split("")
 
             if (CurntId[0] !== PrevId[0]) {
-                console.log(PrevId)
                 const divItm = document.querySelector('#' + PrevId);
                 if (PrevId != "b") {
                     divItm.classList.remove('active');
                 } else {
-                    
+
                     divItm.classList.remove('active2');
                 }
                 divItm.classList.remove('selected');
@@ -312,19 +82,44 @@ const Navigation = () => {
 
     }
 
+    const [toggle, setToggle] = useState(false);
+
+    const ToggleMenu = (e, id, MainDivId) => {
+        if (toggle) {
+
+            const item = document.querySelector(`#${id}`);
+            item.classList.remove('maintain');
+
+            const item2 = document.querySelector(`#${MainDivId}`);
+            item2.classList.remove('maintain');
+            setToggle(false)
+        } else {
+            const item = document.querySelector(`#${id}`);
+            item.classList.add('maintain');
+            const item2 = document.querySelector(`#${MainDivId}`);
+            item2.classList.add('maintain');
+            setToggle(true)
+        }
+
+
+    }
+
     return (
-        <Nav color={COLORS.blue}>
+        <Nav id="Nav" color={COLORS.blue}>
             <NavUl>
                 <Navli>
                     <NavA href="#">
                         <NavImg><SiPhpmyadmin /></NavImg>
                         <NavTitle>Brand Name</NavTitle>
+                        {toggle ? <NavToggle onClick={(e) => ToggleMenu(e, "Nav", "Main")}><GrRadialSelected /></NavToggle>: 
+                        <NavToggle onClick={(e) => ToggleMenu(e, "Nav", "Main")}><GrRadial /></NavToggle>}
                     </NavA>
                 </Navli>
                 <Navli id="a" size="-150">
                     <NavA href="#" onClick={(e) => ActiveList("a")}>
                         <NavImg><AiOutlineHome /></NavImg>
                         <NavTitle>Dashboard</NavTitle>
+
                     </NavA>
                     <DropMenu>
                         <DropMenuDiv id="a1" onClick={(e) => ActiveDropLink(e, "a")}>

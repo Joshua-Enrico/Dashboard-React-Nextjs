@@ -1,5 +1,7 @@
 import styled from 'styled-components';
+import Main from './main/Main';
 import Navigation from './navigation/Navigation';
+import TobBar from './topbar/TopBar';
 
 const Cont = styled.div`
     position: relative;
@@ -11,6 +13,7 @@ const Container = () => {
     return (
         <Cont>
             <Navigation/>
+            <Main/>
         </Cont>
     )
 }
