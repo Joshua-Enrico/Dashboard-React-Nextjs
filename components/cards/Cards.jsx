@@ -1,5 +1,6 @@
 import { CardsContainer} from "./StyledComp"
 import CardBox from "./cardbox/CardBox";
+import DataList from "./datalist/DataList";
 
 
 const Cards = () => {
@@ -27,6 +28,7 @@ const Cards = () => {
             title={"Earnings"}
             icon={"money"}
             />
+            
         </CardsContainer>
     )
 }

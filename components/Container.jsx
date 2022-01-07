@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import DataList from './cards/datalist/DataList';
 import Main from './main/Main';
 import Navigation from './navigation/Navigation';
 import TobBar from './topbar/TopBar';
