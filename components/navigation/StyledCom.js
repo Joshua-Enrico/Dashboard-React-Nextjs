@@ -362,7 +362,7 @@ export const NavToggleMobile = styled.span`
     text-align: center;
     cursor: pointer !important;
     & > svg {
-    font-size: 1.35em;
+    font-size: 1.55em;
     & > path {
         stroke: ${COLORS.white};
         pointer-events: all;
