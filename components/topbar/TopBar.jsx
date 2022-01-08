@@ -1,11 +1,20 @@
 import { Tbar, FastMenu, Search, Label, Input, User, Img } from './StyledCom';
-import { AiOutlineMail , AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineMail , AiOutlineSearch, AiOutlineMenu } from 'react-icons/ai';
 
 
 const TopBar = () => {
 
+    const TogleMobile = (e, id) => {
+        const Nav = document.querySelector('#' + id);
+        Nav.classList.add("togglemobile")
+
+    }
+
     return (
         <Tbar>
+            <FastMenu >
+                <AiOutlineMenu onClick={(e) =>  TogleMobile(e, "Nav")} />
+            </FastMenu>
             <FastMenu >
                 <AiOutlineMail />
             </FastMenu>

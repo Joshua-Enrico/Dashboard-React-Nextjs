@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '../../../styles/Colors';
-
+import { mobile, desktop } from '../../Responsive';
 
 export const Numbers = styled.div`
     position: relative;

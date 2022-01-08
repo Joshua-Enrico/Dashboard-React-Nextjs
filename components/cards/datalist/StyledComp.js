@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '../../../styles/Colors';
+import { mobilemd, mobilesm } from '../../Responsive';
 
 export const Details = styled.div`
     position: relative;
@@ -8,6 +9,10 @@ export const Details = styled.div`
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-gap: 30px;
+
+    ${mobilemd({
+        gridTemplateColumns: 'repeat(1, 1fr)',
+    })}
 `
 
 export const RecentOrders = styled.div`
@@ -18,6 +23,9 @@ export const RecentOrders = styled.div`
     padding: 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
+    ${mobilesm({
+        overflowX: 'auto',
+    })}
 `
 
 export const CardHeader = styled.div`
@@ -45,6 +53,7 @@ export const Table = styled.table`
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    
 `
 
 export const Thead = styled.thead`
@@ -52,6 +61,7 @@ export const Thead = styled.thead`
 `
 
 export const Tr = styled.tr`
+    overflow: hidden;
     color: ${COLORS.black1};
     & > td:last-child {
         text-align: end;
@@ -75,6 +85,7 @@ export const Tbody = styled.tbody`
         border-bottom: 1px solid ${COLORS.gray};
         &:hover {
             background-color: ${COLORS.blue};
+            color: ${COLORS.white};
         }
 
     }
@@ -87,6 +98,9 @@ export const Span = styled.span`
     padding: 2px 4px;
     font-size: 14px; font-weight: 500;
     border-radius: 4px;
+    ${mobilesm({
+        whiteSpace: 'nowrap',
+    })}
     ${props => props.status === 'Pending' && `background: #f7b733; color: ${COLORS.white}`}
     ${props => props.status === 'Delivered' && `background: rgb(40, 199, 111); color: ${COLORS.white};`}
     ${props => props.status === 'In Progress' && `background: #468DE3; color: ${COLORS.white};`}

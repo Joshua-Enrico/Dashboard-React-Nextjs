@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '../../styles/Colors';
-import { DMain } from '../main/StyledCom';
+import { mobile, desktop } from '../Responsive';
 
 export const  DropMenu = styled.ul`
 margin: 0;
@@ -35,6 +35,92 @@ export const Nav = styled.div`
     overflow: hidden;
     z-index: 999;
 
+    ${mobile({
+        width: '0px',
+        left: '-10px',
+    })}
+
+    &.togglemobile {
+        width: 240px;
+        
+        ${Navli} {
+            &.active {
+                background: ${COLORS.white};
+                & > a {
+                    color: ${COLORS.blue};
+                }
+                ${DropMenu} {
+                    display: block;
+                }
+                & > a:before {
+                    {
+                        content: '';
+                        position: absolute;
+                        right: 0;
+                        width: 50px;
+                        top: -50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        background: transparent;
+                        box-shadow: 35px 35px 0 10px ${COLORS.white};
+                        pointer-events: none;
+                    }
+                }
+                & > a:after {
+                    {
+                        content: '';
+                        position: absolute;
+                        right: 0;
+                        width: 50px;
+                        bottom: -150px !important;
+                        height: 50px;
+                        border-radius: 50%;
+                        background: transparent;
+                        box-shadow: 35px -35px 0 10px ${COLORS.white};
+                        pointer-events: none;
+                    }
+                }
+            }
+            &.active2 {
+                ${DropMenu} {
+                    display: block;
+                }
+                background: ${COLORS.white};
+                & > a {
+                    color: ${COLORS.blue};
+                }
+                & > a:before {
+                    {
+                        content: '';
+                        position: absolute;
+                        right: 0;
+                        width: 50px;
+                        top: -50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        background: transparent;
+                        box-shadow: 35px 35px 0 10px ${COLORS.white};
+                        pointer-events: none;
+                    }
+                }
+
+                & > a:after {
+                    {
+                        content: '';
+                        position: absolute;
+                        right: 0;
+                        width: 50px;
+                        bottom: -181px !important;
+                        height: 50px;
+                        border-radius: 50%;
+                        background: transparent;
+                        box-shadow: 35px -35px 0 10px ${COLORS.white};
+                        pointer-events: none;
+                    }
+                }
+            }
+        }
+    }
 
     ${Navli} {
         &.selected {
@@ -75,7 +161,7 @@ export const Nav = styled.div`
     }
     &.maintain {
         z-index: none;
-        width: 300px;
+        width: 240px;
         ${Navli} {
             &.active {
                 background: ${COLORS.white};
@@ -154,83 +240,83 @@ export const Nav = styled.div`
             }
         }
     }
-
-    &:hover {
-        width: 300px;
-
-        ${Navli} {
-            &.active {
-                background: ${COLORS.white};
-                & > a {
-                    color: ${COLORS.blue};
-                }
-                ${DropMenu} {
-                    display: block;
-                }
-                & > a:before {
-                    {
-                        content: '';
-                        position: absolute;
-                        right: 0;
-                        width: 50px;
-                        top: -50px;
-                        height: 50px;
-                        border-radius: 50%;
-                        background: transparent;
-                        box-shadow: 35px 35px 0 10px ${COLORS.white};
-                        pointer-events: none;
+    @media only screen and (min-width: 991px) {
+        &:hover {
+            width: 240px;
+            ${Navli} {
+                &.active {
+                    background: ${COLORS.white};
+                    & > a {
+                        color: ${COLORS.blue};
+                    }
+                    ${DropMenu} {
+                        display: block;
+                    }
+                    & > a:before {
+                        {
+                            content: '';
+                            position: absolute;
+                            right: 0;
+                            width: 50px;
+                            top: -50px;
+                            height: 50px;
+                            border-radius: 50%;
+                            background: transparent;
+                            box-shadow: 35px 35px 0 10px ${COLORS.white};
+                            pointer-events: none;
+                        }
+                    }
+                    & > a:after {
+                        {
+                            content: '';
+                            position: absolute;
+                            right: 0;
+                            width: 50px;
+                            bottom: -150px !important;
+                            height: 50px;
+                            border-radius: 50%;
+                            background: transparent;
+                            box-shadow: 35px -35px 0 10px ${COLORS.white};
+                            pointer-events: none;
+                        }
                     }
                 }
-                & > a:after {
-                    {
-                        content: '';
-                        position: absolute;
-                        right: 0;
-                        width: 50px;
-                        bottom: -150px !important;
-                        height: 50px;
-                        border-radius: 50%;
-                        background: transparent;
-                        box-shadow: 35px -35px 0 10px ${COLORS.white};
-                        pointer-events: none;
+                &.active2 {
+                    ${DropMenu} {
+                        display: block;
                     }
-                }
-            }
-            &.active2 {
-                ${DropMenu} {
-                    display: block;
-                }
-                background: ${COLORS.white};
-                & > a {
-                    color: ${COLORS.blue};
-                }
-                & > a:before {
-                    {
-                        content: '';
-                        position: absolute;
-                        right: 0;
-                        width: 50px;
-                        top: -50px;
-                        height: 50px;
-                        border-radius: 50%;
-                        background: transparent;
-                        box-shadow: 35px 35px 0 10px ${COLORS.white};
-                        pointer-events: none;
+                    background: ${COLORS.white};
+                    & > a {
+                        color: ${COLORS.blue};
                     }
-                }
-
-                & > a:after {
-                    {
-                        content: '';
-                        position: absolute;
-                        right: 0;
-                        width: 50px;
-                        bottom: -181px !important;
-                        height: 50px;
-                        border-radius: 50%;
-                        background: transparent;
-                        box-shadow: 35px -35px 0 10px ${COLORS.white};
-                        pointer-events: none;
+                    & > a:before {
+                        {
+                            content: '';
+                            position: absolute;
+                            right: 0;
+                            width: 50px;
+                            top: -50px;
+                            height: 50px;
+                            border-radius: 50%;
+                            background: transparent;
+                            box-shadow: 35px 35px 0 10px ${COLORS.white};
+                            pointer-events: none;
+                        }
+                    }
+    
+                    & > a:after {
+                        {
+                            content: '';
+                            position: absolute;
+                            right: 0;
+                            width: 50px;
+                            bottom: -181px !important;
+                            height: 50px;
+                            border-radius: 50%;
+                            background: transparent;
+                            box-shadow: 35px -35px 0 10px ${COLORS.white};
+                            pointer-events: none;
+                        }
                     }
                 }
             }
@@ -239,25 +325,50 @@ export const Nav = styled.div`
 `;
 
 export const NavToggle = styled.span`
-position: relative;
-display: block;
-min-width: 60px;
-height: 60px;
-right: -50px;
-line-height: 70px;
-text-align: center;
-cursor: pointer !important;
-& > svg {
-    font-size: 1.35em;
-    & > circle {
-        stroke: ${COLORS.white};
-        pointer-events: all;
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    right: -5px;
+    line-height: 70px;
+    text-align: center;
+    cursor: pointer !important;
+    ${mobile({
+        display: 'none'     
+    })}
+    & > svg {
+        font-size: 1.35em;
+        & > circle {
+            stroke: ${COLORS.white};
+            pointer-events: all;
+        }
+        & > path {
+            stroke: ${COLORS.white};
+            pointer-events: all;
+        }
     }
+`
+
+export const NavToggleMobile = styled.span`
+    position: relative;
+    display: none;
+    ${mobile({
+        display: 'block'
+    })}
+    min-width: 80px;
+    height: 60px;
+    right: -5px;
+    line-height: 70px;
+    text-align: center;
+    cursor: pointer !important;
+    & > svg {
+    font-size: 1.35em;
     & > path {
         stroke: ${COLORS.white};
         pointer-events: all;
     }
 }
+
 `
 
 export const NavUl = styled.ul`

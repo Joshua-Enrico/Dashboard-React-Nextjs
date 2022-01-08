@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { COLORS } from '../../styles/Colors';
+import { mobile, desktop } from '../Responsive';
+
 
 
 export const Tbar = styled.div`
@@ -9,21 +11,38 @@ export const Tbar = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
+
+    ${desktop({
+        '& > div:first-child': {
+            display: 'none',
+        }
+    })}
+    ${mobile({
+        '& > div:nth-child(2)': {
+            display: 'none',
+        }
+    })}
 `
 
 export const FastMenu = styled.div`
     position: relative;
     top: 0;
-    width: 60px;
+    width: 5%;
     height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.5em;
-    cursor: pointer;
+    
     border-radius: 20px;
     border: 1px solid #ececec;
     background-color: #ececec;
+
+    & > svg {
+        cursor: pointer;
+        margin: 0px 5px;
+    }
+
 `
 export const Search = styled.div`
     position: relative;

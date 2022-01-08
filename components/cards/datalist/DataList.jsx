@@ -5,6 +5,7 @@ import {
 } from "./StyledComp";
 
 import { Data } from "./Data"
+import NewCustomers from "../recentusers/NewCustomers";
 
 const DataList = () => {
     return (
@@ -36,6 +37,7 @@ const DataList = () => {
                     </Tbody>
                 </Table>
             </RecentOrders>
+            <NewCustomers/>
         </Details>
     )
 }

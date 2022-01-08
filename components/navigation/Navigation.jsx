@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 //Icons
-import { AiOutlineHome, AiOutlineMail } from 'react-icons/ai';
+import { AiOutlineHome, AiOutlineMail, AiOutlineCloseCircle } from 'react-icons/ai';
 import { MdSpaceDashboard } from 'react-icons/md';
 import { IoIosPeople } from 'react-icons/io';
 import { SiPhpmyadmin } from 'react-icons/si';
@@ -9,7 +9,8 @@ import { BsCircle } from 'react-icons/bs';
 import { GrRadial, GrRadialSelected } from 'react-icons/gr';
 
 import { COLORS } from '../../styles/Colors';
-import { DropMenu, Navli, Nav, NavUl, NavA, NavImg, NavTitle, DropMenuDiv, DropMenuText, DropMenuIcon, NavToggle } from './StyledCom';
+import { DropMenu, Navli, Nav, NavUl, NavA, NavImg, NavTitle, DropMenuDiv,
+         DropMenuText, DropMenuIcon, NavToggle, NavToggleMobile } from './StyledCom';
 
 
 const Navigation = () => {
@@ -104,6 +105,13 @@ const Navigation = () => {
 
     }
 
+    const TogleMobilee = (e, id) => {
+        console.log("working")
+        const Nav = document.querySelector('#' + id);
+        Nav.classList.remove("togglemobile")
+
+    }
+
     return (
         <Nav id="Nav" color={COLORS.blue}>
             <NavUl>
@@ -113,6 +121,7 @@ const Navigation = () => {
                         <NavTitle>Brand Name</NavTitle>
                         {toggle ? <NavToggle onClick={(e) => ToggleMenu(e, "Nav", "Main")}><GrRadialSelected /></NavToggle>: 
                         <NavToggle onClick={(e) => ToggleMenu(e, "Nav", "Main")}><GrRadial /></NavToggle>}
+                        <NavToggleMobile onClick={(e) => TogleMobilee(e, "Nav")}><AiOutlineCloseCircle /></NavToggleMobile>
                     </NavA>
                 </Navli>
                 <Navli id="a" size="-150">
