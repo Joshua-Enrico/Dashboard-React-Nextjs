@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '../../styles/Colors';
-import { mobile, desktop } from '../Responsive';
+import { mobile, desktop, mobilesm } from '../Responsive';
 
 
 
@@ -28,6 +28,12 @@ export const FastMenu = styled.div`
     position: relative;
     top: 0;
     width: 5%;
+    ${mobile({
+        width: '7%',
+    })}
+    ${mobilesm({
+        width: '20%',
+    })}
     height: 40px;
     display: flex;
     justify-content: center;
